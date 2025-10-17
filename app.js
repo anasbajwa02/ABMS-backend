@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,"public")))
 
 
-
+console.log(process.env.NODE_ENV);
 dbConnection()
 app.listen(PORT,(req,res)=>{
     console.log("server is listening on port 5000")
