@@ -8,7 +8,7 @@ const roleSchema = new mongoose.Schema({
         require:true,
         unique:true,
     },
-    Permissions:[
+    permissions:[
         {
         type: mongoose.Schema.Types.ObjectId,
         ref: "permission", // 👈 references Permission model

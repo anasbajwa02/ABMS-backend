@@ -42,4 +42,4 @@ userSchema.methods.isPasswordCorrect = async function(enterPassword){
     return await bcrypt.compare(enterPassword,this.password)
 }
 
-module.exports = mongoose.model("user",userSchema)
+module.exports = mongoose.model("User",userSchema)

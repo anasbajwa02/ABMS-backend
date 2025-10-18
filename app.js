@@ -7,7 +7,8 @@ const cookieParser = require("cookie-parser")
 require("dotenv").config();
 
 const dbConnection = require("./config/mongoose-connection.js")
-
+const Seed = require("./routes/seedRoutes.js")
+const authRoutes = require("./routes/authRoutes.js")
 
 const PORT = process.env.PORT || 5000
 
@@ -24,7 +25,15 @@ app.use(express.static(path.join(__dirname,"public")))
 
 
 console.log(process.env.NODE_ENV);
+
 dbConnection()
+
+if (process.env.NODE_ENV === "development") {
+  app.use("/api/seed", Seed);
+}
+
+app.use("/api/auth",authRoutes)
+
 app.listen(PORT,(req,res)=>{
     console.log("server is listening on port 5000")
 })
